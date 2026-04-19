@@ -43,7 +43,7 @@ export default function Home() {
           <span className="text-xs font-medium text-[var(--accent)]">v0.1.0 — Open Source</span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--text)] max-w-3xl leading-tight mb-3">
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--text)] max-w-3xl leading-tight tracking-tight mb-3">
           The Claude Code template built for{" "}
           <span className="text-[var(--accent)]">precision.</span>
         </h1>
@@ -85,6 +85,25 @@ python bootstrap.py --name "My Project" --author "Your Name"`}</code>
           </div>
         </div>
       </main>
+
+      {/* Stats bar */}
+      <section className="border-t border-[var(--border)] py-8">
+        <div className="max-w-4xl mx-auto px-6">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { value: "7", label: "Guardrail validators" },
+              { value: "5", label: "SDD phases" },
+              { value: "3", label: "Isolated subagents" },
+              { value: "100%", label: "Structured outputs" },
+            ].map((s) => (
+              <div key={s.label}>
+                <dd className="text-3xl font-bold text-[var(--accent)]">{s.value}</dd>
+                <dt className="mt-1 text-xs font-medium uppercase tracking-widest text-[var(--text-muted)]">{s.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       {/* The two problems */}
       <section className="border-t border-[var(--border)] py-16">
