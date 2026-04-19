@@ -105,15 +105,19 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
 
 function Callout({ type, text }: { type: "info" | "warning" | "tip"; text: string }) {
   const styles = {
-    info: "border-blue-500/30 bg-blue-500/5 text-blue-400",
-    warning: "border-yellow-500/30 bg-yellow-500/5 text-yellow-400",
-    tip: "border-[var(--accent)]/30 bg-[var(--accent-dim)] text-[var(--accent)]",
+    info: { bar: "bg-[var(--info)]", wrap: "bg-[var(--bg-secondary)] border-[var(--border)]", text: "text-[var(--text-muted)]", label: "text-[var(--info)]" },
+    warning: { bar: "bg-[var(--warning)]", wrap: "bg-[var(--bg-secondary)] border-[var(--border)]", text: "text-[var(--text-muted)]", label: "text-[var(--warning)]" },
+    tip: { bar: "bg-[var(--accent)]", wrap: "bg-[var(--accent-dim)] border-[var(--accent)]/20", text: "text-[var(--text-muted)]", label: "text-[var(--accent)]" },
   };
-  const icons = { info: "ℹ", warning: "⚠", tip: "✦" };
+  const labels = { info: "Info", warning: "Warning", tip: "Tip" };
+  const s = styles[type];
   return (
-    <div className={`my-4 flex gap-3 p-4 rounded-lg border ${styles[type]}`}>
-      <span className="mt-0.5 text-sm flex-shrink-0">{icons[type]}</span>
-      <p className="text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: renderInline(text) }} />
+    <div className={`my-4 flex rounded-lg border overflow-hidden ${s.wrap}`}>
+      <div className={`w-1 flex-shrink-0 ${s.bar}`} />
+      <div className="px-4 py-3">
+        <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${s.label}`}>{labels[type]}</p>
+        <p className={`text-sm leading-relaxed ${s.text}`} dangerouslySetInnerHTML={{ __html: renderInline(text) }} />
+      </div>
     </div>
   );
 }
@@ -121,10 +125,10 @@ function Callout({ type, text }: { type: "info" | "warning" | "tip"; text: strin
 export function DocBody({ content }: { content: DocContent }) {
   return (
     <article>
-      <div className="mb-8 pb-6 border-b border-[var(--border)]">
-        <h1 className="text-3xl font-bold text-[var(--text)] mb-2">{content.title}</h1>
+      <div className="mb-10 pb-8 border-b border-[var(--border)]">
+        <h1 className="text-4xl font-bold text-[var(--text)] tracking-tight mb-3">{content.title}</h1>
         {content.description && (
-          <p className="text-base text-[var(--text-muted)]">{content.description}</p>
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed">{content.description}</p>
         )}
       </div>
 
@@ -132,8 +136,8 @@ export function DocBody({ content }: { content: DocContent }) {
         {content.sections.map((section, i) => (
           <section key={i}>
             {section.heading && (
-              <h2 className="text-lg font-semibold text-[var(--text)] mb-3 flex items-center gap-2 mt-8">
-                <span className="w-1 h-4 rounded bg-[var(--accent)] flex-shrink-0" />
+              <h2 className="text-xl font-semibold text-[var(--text)] mb-3 flex items-center gap-3 mt-10 tracking-tight">
+                <span className="w-1 h-5 rounded-full bg-[var(--accent)] flex-shrink-0" />
                 {section.heading}
               </h2>
             )}
