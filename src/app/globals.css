@@ -9,7 +9,17 @@
   --text-muted: #6B7280;
   --accent: #00C26E;
   --accent-bright: #00E584;
-  --accent-dim: rgba(0, 229, 132, 0.12);
+  --accent-dim: rgba(0, 194, 110, 0.12);
+
+  --success: #00C26E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+
+  --shadow-subtle: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-default: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-raised: 0 8px 32px rgba(0,0,0,0.14);
+  --shadow-floating: 0 24px 64px rgba(0,0,0,0.18);
 }
 
 .dark {
@@ -22,6 +32,16 @@
   --accent: #00E584;
   --accent-bright: #00E584;
   --accent-dim: rgba(0, 229, 132, 0.08);
+
+  --success: #00E584;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+
+  --shadow-subtle: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-default: 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-raised: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-floating: 0 24px 64px rgba(0,0,0,0.6);
 }
 
 @theme inline {
@@ -34,6 +54,10 @@
   --color-accent: var(--accent);
   --color-accent-bright: var(--accent-bright);
   --color-accent-dim: var(--accent-dim);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
