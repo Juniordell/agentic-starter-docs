@@ -12,12 +12,12 @@ export function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 h-screen w-64 flex flex-col border-r border-[var(--border)] bg-[var(--surface)] z-40">
       {/* Header */}
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
+      <Link href="/" className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)] hover:bg-[var(--bg-secondary)] transition-colors">
         <Logo size={28} />
         <span className="font-semibold text-[var(--text)] text-sm tracking-wide">
           Agentic Starter
         </span>
-      </div>
+      </Link>
 
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto py-4 px-3">
